@@ -197,6 +197,43 @@ namespace ProyClase01.Consola
              * horas trabajadas normales, costo horas trabajadas normales, horas extras, costo horas extras 
              * y pago total a realizar.
              */
+            //Dictionary<int, int> listaCostoExtra = new Dictionary<int, int>();
+            //listaCostoExtra.Add(1, 12);
+            //listaCostoExtra.Add(2, 12);
+            //listaCostoExtra.Add(3, 12);
+            //listaCostoExtra.Add(4, 13);
+            //listaCostoExtra.Add(5, 13);
+            //listaCostoExtra.Add(6, 15);
+            //Console.Write("Ingrese horas trabajadas: ");
+            //int horas = Convert.ToInt32(Console.ReadLine());
+            //int horasExtra = horas - 8;
+            //if (horasExtra <= 0)
+            //{
+            //    Console.WriteLine("Horas Trabajadas: " + horas);
+            //    Console.WriteLine("Costo Horas Trabajadas: " + horas * 10 + " S/.");
+            //    Console.WriteLine("Horas Extras: 0");
+            //    Console.WriteLine("Costo Horas Extras: 0 S/.");
+            //    Console.WriteLine("------------------------");
+            //    Console.WriteLine("Pago a realizar es de " + (horas * 10) + " S/.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Horas Trabajadas: " + 8);
+            //    int costoHorasT = 8 * 10;
+            //    Console.WriteLine("Costo Horas Trabajadas: " + costoHorasT + " S/.");
+            //    int costo = listaCostoExtra[horasExtra];
+            //    Console.WriteLine("Horas Extras: " + horasExtra);
+            //    int costoHorasE = horasExtra * costo;
+            //    Console.WriteLine("Costo Horas Extras: " + costoHorasE + " S/.");
+            //    Console.WriteLine("------------------------");
+            //    Console.WriteLine("Pago a realizar es de " + (costoHorasT + costoHorasE) + " S/.");
+            //}
+
+            /*Luego de haber calculado el costo de hora normal y hora extra, se requiere 
+             * almacenar datos del trabajador(codigo, nombre, horas de trabajo y pago total a realizar)
+             - Crear una lista que pueda almacenar los datos de los trabajadores ingresados 
+             por pantalla, excepto pago total a realizar que debe ser calculado
+             */
             Dictionary<int, int> listaCostoExtra = new Dictionary<int, int>();
             listaCostoExtra.Add(1, 12);
             listaCostoExtra.Add(2, 12);
@@ -204,39 +241,68 @@ namespace ProyClase01.Consola
             listaCostoExtra.Add(4, 13);
             listaCostoExtra.Add(5, 13);
             listaCostoExtra.Add(6, 15);
-            Console.Write("Ingrese horas trabajadas: ");
-            int horas = Convert.ToInt32(Console.ReadLine());
-            int horasExtra = horas - 8;
-            if (horasExtra <= 0)
+            int numMenu;
+            string rpta;
+            List<TrabajadorBEAN> listaTrabaj = new List<TrabajadorBEAN>();
+            //TrabajadorBEAN trabajador = new TrabajadorBEAN();//Error común al programar, crear siempre todos los objetos al iniciar
+            TrabajadorBEAN trabajador;
+            do
             {
-                Console.WriteLine("Horas Trabajadas: " + horas);
-                Console.WriteLine("Costo Horas Trabajadas: " + horas * 10 + " S/.");
-                Console.WriteLine("Horas Extras: 0");
-                Console.WriteLine("Costo Horas Extras: 0 S/.");
-                Console.WriteLine("------------------------");
-                Console.WriteLine("Pago a realizar es de " + (horas * 10) + " S/.");
-            }
-            else
-            {
-                Console.WriteLine("Horas Trabajadas: " + 8);
-                int costoHorasT = 8 * 10;
-                Console.WriteLine("Costo Horas Trabajadas: " + costoHorasT + " S/.");
-                int costo = listaCostoExtra[horasExtra];
-                Console.WriteLine("Horas Extras: " + horasExtra);
-                int costoHorasE = horasExtra * costo;
-                Console.WriteLine("Costo Horas Extras: " + costoHorasE + " S/.");
-                Console.WriteLine("------------------------");
-                Console.WriteLine("Pago a realizar es de " + (costoHorasT + costoHorasE) + " S/.");
-            }
+                Console.Clear();
+                Console.WriteLine("Menú Trabajadores");
+                Console.WriteLine("1 - Ingresar Datos Trabajadores");
+                Console.WriteLine("2 - Listar Datos Trabajadores");
+                Console.WriteLine("----------------------------------");
+                Console.Write("Ingrese número del menú: ");
+                numMenu = Convert.ToInt32(Console.ReadLine());
+                switch (numMenu)
+                {
+                    case 1:
+                        trabajador = new TrabajadorBEAN();
+                        Console.Write("\nIngrese Código: ");
+                        trabajador.Codigo = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Ingrese Nombre: ");
+                        trabajador.Nombre = Console.ReadLine();
+                        Console.Write("Ingrese Horas de Trabajo: ");
 
-            /*Luego de haber calculado el costo de hora normal y hora extra, se requiere 
-             * almacenar datos del trabajador(codigo, nombre, horas de trabajo y pago total a realizar)
-             - Crear una lista que pueda almacenar los datos de los trabajadores ingresados 
-             por pantalla, excepto pago total a realizar que debe ser calculado
-             */
+                        int horas = Convert.ToInt32(Console.ReadLine());
+                        trabajador.HorasTrabajo = horas;
+                        int horasExtra = horas - 8;
+                        if (horasExtra <= 0)
+                        {
+                            trabajador.PagoTotal = (horas * 10);
+                        }
+                        else
+                        {
+                            int costoHorasT = 8 * 10;
+                            int costo = listaCostoExtra[horasExtra];
+                            int costoHorasE = horasExtra * costo;
+                            trabajador.PagoTotal = (costoHorasT + costoHorasE);
+                        }
 
+                        listaTrabaj.Add(trabajador);
+                        break;
+                    case 2:
+                        Console.WriteLine("\nLista de trabajadores");
+                        Console.WriteLine("--------------------------------");
+                        foreach (var item in listaTrabaj)
+                        {
+                            Console.WriteLine(item.Codigo + "  " + item.Nombre + "  " + item.HorasTrabajo + "  " + item.PagoTotal);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                Console.Write("\n¿Desea continuar(S/N)?");
+                rpta = Console.ReadLine();
+            } while (rpta == "S" || rpta == "s");
         }
     }
-
-
+    class TrabajadorBEAN
+    {
+        public int Codigo { get; set; }
+        public string Nombre { get; set; }
+        public int HorasTrabajo { get; set; }
+        public int PagoTotal { get; set; }
+    }
 }

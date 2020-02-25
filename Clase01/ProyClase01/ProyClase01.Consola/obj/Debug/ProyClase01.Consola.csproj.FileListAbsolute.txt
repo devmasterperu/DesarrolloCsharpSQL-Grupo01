@@ -1,0 +1,6 @@
+C:\Users\hevil\source\repos\DesarrolloCsharpSQL-Grupo01\Clase01\ProyClase01\ProyClase01.Consola\bin\Debug\ProyClase01.Consola.exe.config
+C:\Users\hevil\source\repos\DesarrolloCsharpSQL-Grupo01\Clase01\ProyClase01\ProyClase01.Consola\bin\Debug\ProyClase01.Consola.exe
+C:\Users\hevil\source\repos\DesarrolloCsharpSQL-Grupo01\Clase01\ProyClase01\ProyClase01.Consola\bin\Debug\ProyClase01.Consola.pdb
+C:\Users\hevil\source\repos\DesarrolloCsharpSQL-Grupo01\Clase01\ProyClase01\ProyClase01.Consola\obj\Debug\ProyClase01.Consola.csprojAssemblyReference.cache
+C:\Users\hevil\source\repos\DesarrolloCsharpSQL-Grupo01\Clase01\ProyClase01\ProyClase01.Consola\obj\Debug\ProyClase01.Consola.exe
+C:\Users\hevil\source\repos\DesarrolloCsharpSQL-Grupo01\Clase01\ProyClase01\ProyClase01.Consola\obj\Debug\ProyClase01.Consola.pdb
