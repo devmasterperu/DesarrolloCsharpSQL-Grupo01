@@ -1,0 +1,59 @@
+﻿@using ProyClase02.WebApplication1.Models.BEAN
+@model List<ContactoClienteBEAN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo Contacto", "Agregar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            idContactabilidad
+        </th>
+        <th>
+            Nombre Colaborador
+        </th>
+        <th>
+            Nombre Cliente
+        </th>
+        <th>
+            Nombre Producto
+        </th>
+        <th>
+            fechaContactoCliente
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idContactabilidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreColaborador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaContactoCliente)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

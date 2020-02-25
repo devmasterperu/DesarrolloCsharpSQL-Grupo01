@@ -1,0 +1,31 @@
+﻿@using ProyClase02.WebApplication1.Models.Conection
+@model List<tb_Categoria>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Mantenimiento Categoría</h2>
+
+@Html.ActionLink("Nueva Categoría","Agregar")
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.idCategoria</td>
+                <td>@item.nombreCategoria</td>
+                <td>
+                    @Html.ActionLink("Editar Datos","Editar", new { id = item.idCategoria})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
