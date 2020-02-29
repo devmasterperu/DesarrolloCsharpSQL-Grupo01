@@ -15,26 +15,34 @@ namespace ProyClase02.WebApplication1.Controllers
         {
             try
             {
+                string sql = 
+                    @"select cc.idContactabilidad, col.nombreColaborador, cli.nombreCliente, pro.nombreProducto,fechaContactoCliente
+                        from tb_ContactoCliente cc inner join tb_Colaborador col
+                        on cc.idColaborador =col.idColaborador inner join tb_Cliente cli
+                        on cc.idCliente = cli.idCliente inner join tb_Producto pro
+                        on cc.idProducto = pro.idProducto";
                 using (var db = new ConectionBD())
                 {
-                    var lista = from cc in db.tb_ContactoCliente
-                                join c in db.tb_Colaborador on cc.idColaborador equals c.idColaborador
-                                join cl in db.tb_Cliente on cc.idCliente equals cl.idCliente
-                                join p in db.tb_Producto on cc.idProducto equals p.idProducto
-                                select new ContactoClienteBEAN
-                                {
-                                    idContactabilidad = cc.idContactabilidad,
-                                    idColaborador = cc.idColaborador,
-                                    NombreColaborador = c.nombreColaborador + " "+ c.apellidoColaborador,
-                                    fechaContactoCliente = cc.fechaContactoCliente,
-                                    idCliente = cc.idCliente,
-                                    NombreCliente = cl.nombreCliente + " "+ cl.apellidosCliente,
-                                    NombreProducto = p.nombreProducto
-                                };
+                    //var lista = from cc in db.tb_ContactoCliente
+                    //            join c in db.tb_Colaborador on cc.idColaborador equals c.idColaborador
+                    //            join cl in db.tb_Cliente on cc.idCliente equals cl.idCliente
+                    //            join p in db.tb_Producto on cc.idProducto equals p.idProducto
+                    //            select new ContactoClienteBEAN
+                    //            {
+                    //                idContactabilidad = cc.idContactabilidad,
+                    //                idColaborador = cc.idColaborador,
+                    //                NombreColaborador = c.nombreColaborador + " "+ c.apellidoColaborador,
+                    //                fechaContactoCliente = cc.fechaContactoCliente,
+                    //                idCliente = cc.idCliente,
+                    //                NombreCliente = cl.nombreCliente + " "+ cl.apellidosCliente,
+                    //                NombreProducto = p.nombreProducto
+                    //            };
 
-                    //List < tb_ContactoCliente > listContac = db.tb_ContactoCliente.ToList();
-                    List<ContactoClienteBEAN> listContac = lista.ToList();
-                    return View(listContac);
+                    ////List < tb_ContactoCliente > listContac = db.tb_ContactoCliente.ToList();
+                    //List<ContactoClienteBEAN> listContac = lista.ToList();
+                    //return View(listContac);
+
+                    return View(db.Database.SqlQuery<ContactoClienteBEAN>(sql).ToList());
                 }
             }
             catch (Exception)

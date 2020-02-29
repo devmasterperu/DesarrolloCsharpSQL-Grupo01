@@ -66,7 +66,10 @@ namespace ProyClase02.WebApplication1.Controllers
             {
                 using (var db = new ConectionBD())
                 {
-                    tb_Categoria cat = db.tb_Categoria.Find(id);
+                    //tb_Categoria cat = db.tb_Categoria.Find(id);
+                    tb_Categoria cat = db.tb_Categoria
+                        .Where(x => x.idCategoria == id)// && x.nombreCategoria=="")
+                        .FirstOrDefault();
                     return View(cat);
                 }
             }
