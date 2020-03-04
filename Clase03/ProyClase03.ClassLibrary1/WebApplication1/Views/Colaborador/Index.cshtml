@@ -1,0 +1,64 @@
+﻿@model List<WebApplication1.Models.BEAN.ColaboradorBEAN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Id Colaborador
+        </th>
+        <th>
+            Nombre Colaborador
+        </th>
+        <th>
+            Apellido Colaborador
+        </th>
+        <th>
+            Número Documento
+        </th>
+        <th>
+            Rol
+        </th>
+        <th>
+            Tipo Documento
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdColaborador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreColaborador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoColaborador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumDocColaborador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreRol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreTipoDoc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

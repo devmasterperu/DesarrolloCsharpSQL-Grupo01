@@ -1,0 +1,6 @@
+C:\Users\hevil\source\repos\ProyClase03.ClassLibrary1\ConsolaTestDB\bin\Debug\ConsolaTestDB.exe.config
+C:\Users\hevil\source\repos\ProyClase03.ClassLibrary1\ConsolaTestDB\bin\Debug\ConsolaTestDB.exe
+C:\Users\hevil\source\repos\ProyClase03.ClassLibrary1\ConsolaTestDB\bin\Debug\ConsolaTestDB.pdb
+C:\Users\hevil\source\repos\ProyClase03.ClassLibrary1\ConsolaTestDB\obj\Debug\ConsolaTestDB.csprojAssemblyReference.cache
+C:\Users\hevil\source\repos\ProyClase03.ClassLibrary1\ConsolaTestDB\obj\Debug\ConsolaTestDB.exe
+C:\Users\hevil\source\repos\ProyClase03.ClassLibrary1\ConsolaTestDB\obj\Debug\ConsolaTestDB.pdb
